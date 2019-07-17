@@ -7,6 +7,7 @@
     "npm": ">=6.1.0"
   },
   "scripts": {
+    "lint": "eslint --report-unused-disable-directives --cache --ext .js,.ts .",
     "test-node": "mocha --opts mocha.opts --reporter min --exit dist/esnext/__tests__/setup-node.js dist/esnext/__tests__/**/*.spec.js",
     "test-node:kernel": "mocha --opts mocha.opts dist/esnext/__tests__/setup-node.js dist/esnext/__tests__/kernel/**/*.spec.js --watch",
     "test-node:plugin-conventions": "mocha --opts mocha.opts dist/esnext/__tests__/setup-node.js dist/esnext/__tests__/plugin-conventions/**/*.spec.js --watch",
@@ -83,6 +84,7 @@
     "ts-loader": "^6.0.4",
     "ts-node": "^8.3.0",
     "tsconfig-paths": "^3.8.0",
+    "ts-loader": "^6.0.4",
     "tslib": "^1.10.0",
     "typescript": "^3.5.3",
     "vinyl": "^2.2.0",
