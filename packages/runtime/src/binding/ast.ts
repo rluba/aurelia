@@ -729,14 +729,14 @@ export class BinaryExpression implements IBinaryExpression {
     return this.left.evaluate(f, s, l, p) || this.right.evaluate(f, s, l, p);
   }
   private ['=='](f: LifecycleFlags, s: IScope, l: IServiceLocator, p?: string): boolean {
-    // tslint:disable-next-line:triple-equals
+    // eslint-disable-next-line eqeqeq
     return this.left.evaluate(f, s, l, p) == this.right.evaluate(f, s, l, p);
   }
   private ['==='](f: LifecycleFlags, s: IScope, l: IServiceLocator, p?: string): boolean {
     return this.left.evaluate(f, s, l, p) === this.right.evaluate(f, s, l, p);
   }
   private ['!='](f: LifecycleFlags, s: IScope, l: IServiceLocator, p?: string): boolean {
-    // tslint:disable-next-line:triple-equals
+    // eslint-disable-next-line eqeqeq
     return this.left.evaluate(f, s, l, p) != this.right.evaluate(f, s, l, p);
   }
   private ['!=='](f: LifecycleFlags, s: IScope, l: IServiceLocator, p?: string): boolean {
@@ -788,7 +788,6 @@ export class BinaryExpression implements IBinaryExpression {
     return (this.left.evaluate(f, s, l, p) as number) >= (this.right.evaluate(f, s, l, p) as number);
   }
 
-  // tslint:disable-next-line:member-ordering
   public accept<T>(visitor: IVisitor<T>): T {
     return visitor.visitBinary(this);
   }

@@ -400,8 +400,8 @@ export class BoundQueue implements IAutoProcessingQueue<IController> {
       this.head = controller;
     } else {
       controller.prevBound = this.tail;
-      // tslint:disable-next-line: no-non-null-assertion // implied by boundHead not being undefined
-      this.tail!.nextBound = controller;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.tail!.nextBound = controller; // implied by boundHead not being undefined
     }
     this.tail = controller;
     controller.state |= State.inBoundQueue;
@@ -436,8 +436,8 @@ export class BoundQueue implements IAutoProcessingQueue<IController> {
         next = cur.nextBound;
         cur.nextBound = void 0;
         cur.prevBound = void 0;
-        // tslint:disable-next-line: no-non-null-assertion // we're checking it for undefined the next line
-        cur = next!;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        cur = next!; // we're checking it for undefined the next line
       } while (cur !== void 0);
     }
   }
@@ -484,8 +484,8 @@ export class UnboundQueue implements IAutoProcessingQueue<IController> {
       this.head = controller;
     } else {
       controller.prevUnbound = this.tail;
-      // tslint:disable-next-line: no-non-null-assertion // implied by unboundHead not being undefined
-      this.tail!.nextUnbound = controller;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.tail!.nextUnbound = controller; // implied by unboundHead not being undefined
     }
     this.tail = controller;
     controller.state |= State.inUnboundQueue;
@@ -520,8 +520,8 @@ export class UnboundQueue implements IAutoProcessingQueue<IController> {
         next = cur.nextUnbound;
         cur.nextUnbound = void 0;
         cur.prevUnbound = void 0;
-        // tslint:disable-next-line: no-non-null-assertion // we're checking it for undefined the next line
-        cur = next!;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        cur = next!; // we're checking it for undefined the next line
       } while (cur !== void 0);
     }
   }
@@ -570,8 +570,8 @@ export class AttachedQueue implements IAutoProcessingQueue<IController> {
       this.head = controller;
     } else {
       controller.prevAttached = this.tail;
-      // tslint:disable-next-line: no-non-null-assertion // implied by attachedHead not being undefined
-      this.tail!.nextAttached = controller;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.tail!.nextAttached = controller; // implied by attachedHead not being undefined
     }
     this.tail = controller;
     controller.state |= State.inAttachedQueue;
@@ -606,8 +606,8 @@ export class AttachedQueue implements IAutoProcessingQueue<IController> {
         next = cur.nextAttached;
         cur.nextAttached = void 0;
         cur.prevAttached = void 0;
-        // tslint:disable-next-line: no-non-null-assertion // we're checking it for undefined the next line
-        cur = next!;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        cur = next!; // we're checking it for undefined the next line
       } while (cur !== void 0);
     }
   }
@@ -656,8 +656,8 @@ export class DetachedQueue implements IAutoProcessingQueue<IController> {
       this.head = controller;
     } else {
       controller.prevDetached = this.tail;
-      // tslint:disable-next-line: no-non-null-assertion // implied by detachedHead not being undefined
-      this.tail!.nextDetached = controller;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.tail!.nextDetached = controller; // implied by detachedHead not being undefined
     }
     this.tail = controller;
     controller.state |= State.inDetachedQueue;
@@ -692,8 +692,8 @@ export class DetachedQueue implements IAutoProcessingQueue<IController> {
         next = cur.nextDetached;
         cur.nextDetached = void 0;
         cur.prevDetached = void 0;
-        // tslint:disable-next-line: no-non-null-assertion // we're checking it for undefined the next line
-        cur = next!;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        cur = next!; // we're checking it for undefined the next line
       } while (cur !== void 0);
     }
   }
@@ -722,8 +722,8 @@ export class MountQueue implements IProcessingQueue<IController> {
       this.head = controller;
     } else {
       controller.prevMount = this.tail;
-      // tslint:disable-next-line: no-non-null-assertion // implied by mountHead not being undefined
-      this.tail!.nextMount = controller;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.tail!.nextMount = controller; // implied by mountHead not being undefined
     }
     this.tail = controller;
     controller.state |= State.inMountQueue;
@@ -760,8 +760,8 @@ export class MountQueue implements IProcessingQueue<IController> {
         next = cur.nextMount;
         cur.nextMount = void 0;
         cur.prevMount = void 0;
-        // tslint:disable-next-line: no-non-null-assertion // we're checking it for undefined the next line
-        cur = next!;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        cur = next!; // we're checking it for undefined the next line
       } while (cur !== void 0);
     }
   }
@@ -789,8 +789,8 @@ export class UnmountQueue implements IProcessingQueue<IController> {
       this.head = controller;
     } else {
       controller.prevUnmount = this.tail;
-      // tslint:disable-next-line: no-non-null-assertion // implied by unmountHead not being undefined
-      this.tail!.nextUnmount = controller;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.tail!.nextUnmount = controller; // implied by unmountHead not being undefined
     }
     this.tail = controller;
     controller.state |= State.inUnmountQueue;
@@ -827,8 +827,8 @@ export class UnmountQueue implements IProcessingQueue<IController> {
         next = cur.nextUnmount;
         cur.nextUnmount = void 0;
         cur.prevUnmount = void 0;
-        // tslint:disable-next-line: no-non-null-assertion // we're checking it for undefined the next line
-        cur = next!;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        cur = next!; // we're checking it for undefined the next line
       } while (cur !== void 0);
     }
   }
@@ -978,7 +978,6 @@ export class Lifecycle {
     this.maxFrameDuration = 1000 / 30;
     this.prevFrameDuration = 0;
 
-    // tslint:disable-next-line: promise-must-complete
     this.nextFrame = new Promise(resolve => {
       this.resolveNextFrame = resolve;
     });
@@ -992,7 +991,6 @@ export class Lifecycle {
         }
         if (++this.currentTick > 1) {
           this.resolveNextFrame(timestamp);
-          // tslint:disable-next-line: promise-must-complete
           this.nextFrame = new Promise(resolve => {
             this.resolveNextFrame = resolve;
           });

@@ -221,7 +221,6 @@ export class Router implements IRouter {
     let fullStateInstruction: boolean = false;
     if ((instruction.navigation.back || instruction.navigation.forward) && instruction.fullStateInstruction) {
       fullStateInstruction = true;
-      // tslint:disable-next-line:no-commented-code
       // if (!confirm('Perform history navigation?')) {
       //   this.navigator.cancel(instruction);
       //   this.processingNavigation = null;

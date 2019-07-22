@@ -329,7 +329,6 @@ export function buildTemplateDefinition(
 export function buildTemplateDefinition(
   ctor: CustomElementConstructor | null,
   nameOrDef: string | ITemplateDefinition): TemplateDefinition;
-// tslint:disable-next-line:parameters-max-number
 // @ts-ignore
 export function buildTemplateDefinition(
   ctor: CustomElementConstructor | null,
@@ -346,7 +345,6 @@ export function buildTemplateDefinition(
   hasSlots?: boolean | null,
   strategy?: BindingStrategy | null,
   childrenObservers?: Record<string, IChildrenObserverDescription> | null): TemplateDefinition;
-// tslint:disable-next-line:parameters-max-number // TODO: Reduce complexity (currently at 64)
 export function buildTemplateDefinition(
   ctor: CustomElementConstructor | null,
   nameOrDef: string | ITemplateDefinition | null,

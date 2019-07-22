@@ -4,7 +4,7 @@ import { PLATFORM } from './platform';
 import { Reporter, Tracer } from './reporter';
 import { IResourceType } from './resource';
 
-// tslint:disable: no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 const slice = Array.prototype.slice;
 
@@ -89,8 +89,8 @@ export type Injectable<T = {}> = Constructable<T> & { inject?: Key[] };
 // https://www.typescriptlang.org/docs/handbook/decorators.html#metadata
 // https://rbuckton.github.io/reflect-metadata/
 // As the official spec proposal uses "any", we use it here as well and suppress related typedef linting warnings.
-// tslint:disable:no-any ban-types
 if (!('getOwnMetadata' in Reflect)) {
+  /* eslint-disable @typescript-eslint/ban-types */
   Reflect.getOwnMetadata = function(metadataKey: any, target: Object): any {
     return (target as IIndexable<Object>)[metadataKey];
   };
@@ -208,7 +208,7 @@ export class DI {
 
         if (dependencies.length === 1) {
           // We know for sure that it's not void 0 due to the above check.
-          // tslint:disable-next-line: no-non-null-assertion
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           target.inject![descriptor] = dependencies[0] as Constructable;
         }
       } else if (key) { // It's a property decorator. Not supported by the container without plugins.
@@ -231,7 +231,6 @@ export class DI {
     };
   }
 
-  // tslint:disable:jsdoc-format
   /**
    * Registers the `target` class as a transient dependency; each time the dependency is resolved
    * a new instance will be created.
@@ -251,7 +250,6 @@ const Foo = DI.transient(class { });
 Foo.register(container);
 ```
    */
-  // tslint:enable:jsdoc-format
   public static transient<T extends Constructable>(target: T & Partial<RegisterSelf<T>>): T & RegisterSelf<T> {
     target.register = function register(container: IContainer): IResolver<InstanceType<T>> {
       const registration = Registration.transient(target as T, target as T);
@@ -260,7 +258,6 @@ Foo.register(container);
     return target as T & RegisterSelf<T>;
   }
 
-  // tslint:disable:jsdoc-format
   /**
    * Registers the `target` class as a singleton dependency; the class will only be created once. Each
    * consecutive time the dependency is resolved, the same instance will be returned.
@@ -279,7 +276,6 @@ const Foo = DI.singleton(class { });
 Foo.register(container);
 ```
    */
-  // tslint:enable:jsdoc-format
   public static singleton<T extends Constructable>(target: T & Partial<RegisterSelf<T>>): T & RegisterSelf<T> {
     target.register = function register(container: IContainer): IResolver<InstanceType<T>> {
       const registration = Registration.singleton(target, target);
@@ -311,7 +307,6 @@ export const inject = DI.inject;
 function transientDecorator<T extends Constructable>(target: T & Partial<RegisterSelf<T>>): T & RegisterSelf<T> {
   return DI.transient(target);
 }
-// tslint:disable:jsdoc-format
 /**
  * Registers the decorated class as a transient dependency; each time the dependency is resolved
  * a new instance will be created.
@@ -322,9 +317,7 @@ function transientDecorator<T extends Constructable>(target: T & Partial<Registe
 class Foo { }
 ```
  */
-// tslint:enable:jsdoc-format
 export function transient<T extends Constructable>(): typeof transientDecorator;
-// tslint:disable:jsdoc-format
 /**
  * Registers the `target` class as a transient dependency; each time the dependency is resolved
  * a new instance will be created.
@@ -337,7 +330,6 @@ export function transient<T extends Constructable>(): typeof transientDecorator;
 class Foo { }
 ```
  */
-// tslint:enable:jsdoc-format
 export function transient<T extends Constructable>(target: T & Partial<RegisterSelf<T>>): T & RegisterSelf<T>;
 export function transient<T extends Constructable>(target?: T & Partial<RegisterSelf<T>>): T & RegisterSelf<T> | typeof transientDecorator {
   return target == null ? transientDecorator : transientDecorator(target);
@@ -346,7 +338,6 @@ export function transient<T extends Constructable>(target?: T & Partial<Register
 function singletonDecorator<T extends Constructable>(target: T & Partial<RegisterSelf<T>>): T & RegisterSelf<T> {
   return DI.singleton(target);
 }
-// tslint:disable:jsdoc-format
 /**
  * Registers the decorated class as a singleton dependency; the class will only be created once. Each
  * consecutive time the dependency is resolved, the same instance will be returned.
@@ -357,9 +348,7 @@ function singletonDecorator<T extends Constructable>(target: T & Partial<Registe
 class Foo { }
 ```
  */
-// tslint:enable:jsdoc-format
 export function singleton<T extends Constructable>(): typeof singletonDecorator;
-// tslint:disable:jsdoc-format
 /**
  * Registers the `target` class as a singleton dependency; the class will only be created once. Each
  * consecutive time the dependency is resolved, the same instance will be returned.
@@ -372,7 +361,6 @@ export function singleton<T extends Constructable>(): typeof singletonDecorator;
 class Foo { }
 ```
  */
-// tslint:enable:jsdoc-format
 export function singleton<T extends Constructable>(target: T & Partial<RegisterSelf<T>>): T & RegisterSelf<T>;
 export function singleton<T extends Constructable>(target?: T & Partial<RegisterSelf<T>>): T & RegisterSelf<T> | typeof singletonDecorator {
   return target == null ? singletonDecorator : singletonDecorator(target);

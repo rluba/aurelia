@@ -405,7 +405,6 @@ describe('[UNIT] blur.spec.ts', function() {
       linkedWith: string | Element | (string | Element)[];
       linkingContext: string | Element | null;
       blurHost: string | HTMLElement;
-      // tslint:disable:prefer-method-signature
       title: () => string;
       template: () => string;
       assertFn: (ctx: HTMLTestContext, host: HTMLElement, sut: Blur) => void | Promise<void>;

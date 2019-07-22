@@ -16,7 +16,7 @@ export function loader(
   contents: string,
   _preprocess = preprocess // for testing
 ) {
-  // tslint:disable-next-line:no-unused-expression strict-boolean-expressions
+  // eslint-disable-next-line no-unused-expressions, @typescript-eslint/strict-boolean-expressions
   this.cacheable && this.cacheable();
   const cb = this.async() as webpack.loader.loaderCallback;
   const options = getOptions(this);
